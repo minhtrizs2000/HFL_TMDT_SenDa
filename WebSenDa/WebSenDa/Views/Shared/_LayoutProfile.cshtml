@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "Layout Khách Hàng";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="text-center" style="padding-bottom: 50px">
+        <a href="/SanPham/Index">
+            <div class="mLogo">
+
+            </div>
+        </a>
+    </div>
+    <nav class="mNavBar navbar navbar-expand-lg navbar-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                    @Html.ActionLink("Trang Chủ", "Index", "SanPham", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @(ViewContext.RouteData.Values["Action"].ToString() == "AllSP" ? "active" : "")">
+                    @Html.ActionLink("Sản Phẩm", "AllSP", "SanPham", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/SanPham/LocLoaiSP/1" id="navbarDropdown_SenDa" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Sen Đá
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_SenDa">
+                        <a class="dropdown-item" href="/SanPham/LocLoaiSD/1">Liên Đài</a>
+                        <a class="dropdown-item" href="/SanPham/LocLoaiSD/2">Thân cao</a>
+                        @*<div class="dropdown-divider"></div>*@
+                        <a class="dropdown-item" href="/SanPham/LocLoaiSD/3">Hawarthia</a>
+                        <a class="dropdown-item" href="/SanPham/LocLoaiSD/4">Sedum</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/SanPham/LocLoaiSP/2" id="navbarDropdown_ChauCay" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Chậu Cây
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_ChauCay">
+                        <a class="dropdown-item" href="/SanPham/LocLoaiCC/1">Đất nung</a>
+                        <a class="dropdown-item" href="/SanPham/LocLoaiCC/2">Nhựa</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/SanPham/LocLoaiSP/3" id="navbarDropdown_GiaThe" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Giá Thể
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_GiaThe">
+                        <a class="dropdown-item" href="/SanPham/LocLoaiGT/1">Đất trồng</a>
+                        <a class="dropdown-item" href="/SanPham/LocLoaiGT/2">Phân bón</a>
+                        <a class="dropdown-item" href="/SanPham/LocLoaiGT/3">Đá - Sỉ than</a>
+                    </div>
+                </li>
+            </ul>
+
+            @*<form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>*@
+
+
+            @using (Html.BeginForm("SearchSP", "SanPham", FormMethod.Get, new { @Class = "row" }))
+            {<form>
+                    <input type="search" id="searchString" class="form-control col-8" name="searchString" placeholder="Search" aria-label="Search">
+                    <input type="submit" value="Search" class="btn btn-outline-success col-4" />
+                </form>
+            }
+
+
+            @*@using (Html.BeginForm("SearchSP", "SanPham", FormMethod.Get, new { @style = "float: right; width: 90%; text-align: center" }))
+                {
+                    <input type="text" id="searchString" style="width:40%" name="searchString">
+                    <input type="submit" value="Search" class="btn btn-outline-info" style="margin-bottom:5px" />
+                }*@
+        <div class="subFunction">
+            <a class="text-success" style="font-size: 24px" href="@Url.Action("Index","GioHang")">
+                <i class="fa fa-cart-plus"></i>
+                @*//số lượng sp trong giỏ hàng//*@
+                <div class="numCart">
+                    @*//if sl > 99 => 99+//*@
+                    <span>99+</span>
+                </div>
+            </a>
+
+            @if (Session["Email"] == null)
+            {
+                <a href="/DangNhap/Index" class="text-success">Đăng nhập</a>
+                <span> / </span>
+                <a href="#" class="text-success">Đăng ký</a>
+            }
+            else
+            {
+                <a href="/KhachHang/Details/@((int)Session["IdKH"])" class="text-success">@Session["TenTK"]</a>
+                @Html.ActionLink("Đăng xuất", "DangXuat","DangNhap")
+            }
+        </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+
+        <div class="mCart" id="cardWrap">
+            <div class="card"></div>
+            <div class="cardContent">
+
+                <div class="tableContent">
+                    <div class="row">
+                        <div class="col-12 menu_btn row">
+                            <div class="col-3">
+                                <a class="btn btn-success" href="@Url.Action("Index","SanPham")">Tiếp tục mua hàng</a>
+                            </div>
+                            <div class="col-3">
+                                <a href="/KhachHang/Details/@Model.khachHang.IDKhachHang" class="btn btn-success">Tài khoản</a>
+                            </div>
+                            <div class="col-3">
+                                <a href="/KhachHang/IndexDiaChi/@Model.khachHang.IDKhachHang" class="btn btn-success">Địa chỉ</a>
+                            </div>
+                            <div class="col-3">
+                                <a href="/ThanhToan/ListDonHang/@Model.khachHang.IDKhachHang" class="btn btn-success">Đơn hàng</a>
+                            </div>
+                        </div>
+
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ball ball1"></div>
+        <div class="ball ball2"></div>
+        <div class="ball ball3"></div>
+
+    </div>
+
+    <footer style="width: 100%;height: 180px;">
+        <img src="~/Images/Logo/footer.jpg" style="width: 100%" />
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/scripts.js"></script>
+
+</body>
+</html>
+

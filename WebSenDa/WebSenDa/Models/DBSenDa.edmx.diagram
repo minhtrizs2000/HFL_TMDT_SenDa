@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f0e61a84522a43fe876960d49de274f5" Name="Diagram1">
+        <EntityTypeShape EntityType="SenDaModel.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.DanhGia" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.DiaChi" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.DonHang" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.KhachHang" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.Kho" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.KhuyenMai" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.LoaiChauCay" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.LoaiGiaThe" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.LoaiSenDa" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.LoaiTaiKhoan" Width="1.5" PointX="1.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.NhanVien" Width="1.5" PointX="3.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.NhapKho" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.Quyen" Width="1.5" PointX="1.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.SanPham" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SenDaModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SenDaModel.FK_ChiTietDonHang_DonHang" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_ChiTietDonHang_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_DanhGia_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_DanhGia_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_DiaChi_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_DonHang_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_KhachHang_LoaiTaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_Kho_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_SanPham_KhuyenMai" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_SanPham_LoaiChauCay" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_SanPham_LoaiGiaThe" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_SanPham_LoaiSanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_SanPham_LoaiSenDa" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_NhanVien_LoaiTaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_NhanVien_Quyen" ManuallyRouted="false" />
+        <AssociationConnector Association="SenDaModel.FK_NhapKho_SanPham" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

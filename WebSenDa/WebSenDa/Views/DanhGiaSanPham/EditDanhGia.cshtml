@@ -1,0 +1,81 @@
+﻿
+@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+<link href="~/Content/Cart/ThanhToan.css" rel="stylesheet" />
+<div class="thanhToanContainer">
+    <h1 class="text-center p-4" style="color: #008042; font-size:40px;">Chỉnh sửa đánh giá</h1>
+    <div class="receiptContainer text-center">
+        <img src="@Url.Content(Model.sanPham.Hinh)" width="200" height="200" />
+        <h3 class="text-center">@Model.sanPham.TenSanPham</h3>
+        <div class="mx-5">
+            @using (Html.BeginForm("EditDanhGia", "DanhGiaSanPham", FormMethod.Post, new { enctype = "multipart/form-data", @Class = "row" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.danhGia.IDKhachHang)
+                @Html.HiddenFor(model => model.danhGia.IDSanPham)
+                <div class="col-12 row">
+                    <div class="form-group col-4">
+                        <div class="col-md-10 text-center">
+                            <img id="previewImage" src="@Url.Content(Model.danhGia.Hinh)" width="200" height="200" />
+                            <input type="file" name="UploadImage" accept="image/*" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+                            @Html.ValidationMessageFor(model => model.danhGia.Hinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <div class="col-md-10 text-center">
+                            <img id="previewImage1" src="@Url.Content(Model.danhGia.Hinh1)" width="200" height="200" />
+                            <input type="file" name="UploadImage1" accept="image/*" onchange="ShowImagePreview(this, document.getElementById('previewImage1'))" />
+                            @Html.ValidationMessageFor(model => model.danhGia.Hinh1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-4">
+                        <div class="col-md-10 text-center">
+                            <img id="previewImage2" src="@Url.Content(Model.danhGia.Hinh2)" width="200" height="200" />
+                            <input type="file" name="UploadImage2" accept="image/*" onchange="ShowImagePreview(this, document.getElementById('previewImage2'))" />
+                            @Html.ValidationMessageFor(model => model.danhGia.Hinh2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group text-left">
+                        <h4>Nội dung</h4>
+                        <h5 class="pl-5"> @Model.danhGia.NoiDung</h5>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h4>Chỉnh sửa nội dung:</h4>
+                    @Html.TextArea("NoiDung", new { @Class = "form-control mw-100", cols = "50", rows = "5" })
+                    @Html.ValidationMessageFor(model => model.danhGia.NoiDung, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.ActionLink("Trở về", "Index", "DanhGiaSanPham", new { id = Model.donHang.IDDonHang }, new { @class = "btn btn-primary my-4" })
+                    @{
+                        Session["iddh"] = Model.donHang.IDDonHang;
+                    }
+                    <input type="submit" value="Lưu" class="btn btn-primary">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    function ShowImagePreview(UploadImage, previewImage) {
+        if (UploadImage.files && UploadImage.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(UploadImage.files[0]);
+        }
+    }
+</script>

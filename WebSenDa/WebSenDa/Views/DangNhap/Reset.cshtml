@@ -1,0 +1,29 @@
+﻿@model WebSenDa.Models.ResetModel
+
+@{
+    ViewBag.Title = "Reset";
+    Layout = "~/Views/Shared/_LayoutLoginRegister.cshtml";
+}
+
+@using (Html.BeginForm("Reset", "DangNhap"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group row">
+        <div class="col-4 col-form-label">@Html.LabelFor(model => model.Email)</div>
+        @Html.TextBoxFor(model => model.Email, new { style = "field-validation-error", @Class = "form-control col-8" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div class="form-group row justify-content-center">
+        @if (ViewBag.ErrorInfo == null)
+        {
+            <p class="text-danger mb-0">@ViewBag.Error</p>
+        }
+    </div>
+
+    <div class="d-flex justify-content-around">
+        @Html.ActionLink("< Quay lại", "Index", "DangNhap", null, new { @class = "btn btn-outline-success" })
+        <button type="submit" class="btn btn-success">Đặt Lại</button>
+    </div>
+    <p class="pt-5">Bạn chưa có tài khoản? @Html.ActionLink("Đăng ký", "Index", "DangKy", null, new { @class = "" }) ngay!</p>
+}

@@ -1,0 +1,3 @@
+﻿@model WebSenDa.Models.LoaiTaiKhoan
+@Html.DropDownListFor(model => model.IDLoaiTaiKhoan,
+    new SelectList(Model.ListLTK.OrderBy(model => model.TenLoaiTaiKhoan), "IDLoaiTaiKhoan", "TenLoaiTaiKhoan"), "Chọn Loại Tài Khoản", htmlAttributes: new { @class = "form-control" })

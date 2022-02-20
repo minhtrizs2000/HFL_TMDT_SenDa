@@ -1,0 +1,103 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+<link href="~/Content/Cart/ThanhToan.css" rel="stylesheet" />
+
+@if (Model != null)
+{
+    <a class="btn btn-outline-success mt-5 ml-4" href="@Url.Action("Index","GioHang")"><i class="fa fa-arrow-left"></i>Quay lại</a>
+    <div class="thanhToanContainer">
+        <h1 class="text-center p-4" style="color: #008042; font-size:40px;">ĐƠN HÀNG</h1>
+        <div class="receiptContainer">
+            <div class="row">
+                <h5 class="col-3 text-right">Tên tài khoản: </h5>
+                <h5 class="col-3">
+                    @Html.DisplayFor(model => model.khachHang.TenTaiKhoan)
+                </h5>
+                <h5 class="col-3 text-right">Tên khách hàng: </h5>
+                <h5 class="col-3">
+                    @Html.DisplayFor(model => model.khachHang.TenKhachHang)
+                </h5>
+                <h5 class="col-3 text-right">Email: </h5>
+                <h5 class="col-3">
+                    @Html.DisplayFor(model => model.khachHang.Email)
+                </h5>
+                <h5 class="col-3 text-right">Số điện thoại: </h5>
+                <h5 class="col-3">
+                    @Html.DisplayFor(model => model.khachHang.SoDienThoai)
+                </h5>
+            </div>
+            <div class="receiptItems">
+                @foreach (var item in Model.Items)
+                {
+                    decimal giaban;
+                    giaban = item.sanPham.Kho.GiaBan - (item.sanPham.Kho.GiaBan * item.sanPham.KhuyenMai.GiaTriKhuyenMai / 100);
+                    Session["dongia"] = giaban;
+
+                    decimal total;
+                    total = item.soLuongTon * giaban;
+                    Session["thanhtien"] = total;
+                    <div class="row py-2">
+                        <div class="col-2 text-center">
+                            <img src="@Url.Content(item.sanPham.Hinh)" height="75" width="75" />
+                        </div>
+                        <p class="col-4">@Html.DisplayFor(model => item.sanPham.TenSanPham)</p>
+                        <p class="col-2">@giaban VNĐ</p>
+                        <p class="col-2">@item.soLuongTon</p>
+                        <p class="col-2">@total VNĐ</p>
+                    </div>
+
+                }
+            </div>
+        </div>
+        <div class="receiptSum">
+            <div style="display:flex;justify-content:right;align-items:center">
+                <h6 class="mx-5">Phí vận chuyển: </h6>
+                <span style="color:#f44; font-size: 20px;padding-left:55px" class="pr-5">20.000 VNĐ</span>
+            </div>
+            <div style="display:flex;justify-content:right;align-items:center">
+                <h5 class="mx-5">TỔNG HÓA ĐƠN: </h5>
+                <span style="color:#f44; font-size: 30px;" class="pr-5">@Model.Total_money() VNĐ</span>
+            </div>
+
+            <br />
+
+            <div class="text-right w-100">
+                @using (Html.BeginForm("TaoDonHang", "ThanhToan", FormMethod.Post, new { @Class = "row w-100 m-0 pb-2 px-5" }))
+                {
+                    <h5 class="d-inline col-6">Địa chỉ giao hàng: </h5>
+                    <select id="diachi" class="col-6" name="diachi">
+                        @foreach (var dc in Model.ListDiaChi)
+                        {
+                            if (dc.IDKhachHang == Model.khachHang.IDKhachHang)
+                            {
+                                <option value="@dc.DiaChi1">@dc.DiaChi1</option>
+                                Session["idk"] = dc.IDKhachHang;
+                            }
+                        }
+                    </select>
+                    <br />
+                    <h5 class="d-inline col-6">Phương thức thanh toán: </h5>
+                    <select class="col-6" name="phuongthucthanhtoan">
+                        <option value="1">Thanh toán sau khi nhận hàng</option>
+                        <option value="2">Thanh toán trả trước số tài khoản: 0123456789</option>
+                    </select>
+                    <br />
+                    <div class="col-5"></div>
+                    <input class="col-2 mt-5 btn btn-danger" type="submit" value="Xác nhận" />
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    @Html.Partial("EmptyCart")
+}
+

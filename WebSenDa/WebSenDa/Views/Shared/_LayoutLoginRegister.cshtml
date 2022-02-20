@@ -1,0 +1,42 @@
+﻿@model WebSenDa.Models.ViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        .LoginContainer {
+        }
+
+        .formLogin {
+            margin-top: 25vh;
+            background-color: #D7FFC5;
+            border-radius: 10px;
+            padding: 25px 50px 25px 50px;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="LoginContainer row">
+        <div class="col-7">
+            <img style="width:100%; height:100%;" src="~/Images/Banners/Banner06.jpg" />
+        </div>
+        <div class="container body-content col-4 ">
+            <div class="formLogin">@RenderBody()</div>
+        </div>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

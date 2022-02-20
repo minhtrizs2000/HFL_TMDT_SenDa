@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Empty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+
+    <div class="mCart" id="cardWrap">
+
+        <div class="card"></div>
+        <div class="cardContent">
+
+            <h1 class="text-center p-4" style="color: #00ff84; font-size:40px;">GIỎ HÀNG CỦA BẠN</h1>
+            <div class="tableContent text-center">
+                <h1>Bạn chưa có sản phẩm nào!</h1>
+                <a class="btn btn-outline-success" style="font-size: 40px; margin-top: 100px" href="@Url.Action("Index","SanPham")"><i class="fa fa-arrow-left"></i> Tiếp tục mua hàng</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>

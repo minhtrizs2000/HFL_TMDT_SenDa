@@ -1,0 +1,36 @@
+﻿@model WebSenDa.Models.ViewModel
+
+<link href="~/Content/Home/Home.css" rel="stylesheet" />
+<div style="margin-top:100px"></div>
+    @using (Html.BeginForm("AllSP", "SanPham"))
+    {
+        <text>Từ</text>
+        <input type="number" name="min" />
+        <text>000 vnđ</text>
+        <text>---</text>
+        <text>Đến</text>
+        <input type="number" name="max" />
+        <text>000 vnđ</text>
+        <input type="submit" value="Search" />
+
+        <div class="normalItems">
+            <div class="normalItemsContainer row">
+                @foreach (var sp in Model.ListSanPham)
+                {
+                    decimal giaban = sp.Kho.GiaBan;
+                    <div class="col-md-3 px-md-3">
+                        <div class="nItem">
+                            <a href="/SanPham/Details/@sp.IDSanPham"><img src="@Url.Content(sp.Hinh)" /></a>
+                            <div class="nItemContent">
+                                <p>@Html.DisplayFor(modle => sp.TenSanPham)</p>
+                                <div class="nItemContent_span">
+                                    <span>@giaban vnđ</span>
+                                    <span>Còn: @Html.DisplayFor(modle => sp.Kho.SoLuongTon)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+}

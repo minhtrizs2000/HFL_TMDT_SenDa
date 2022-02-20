@@ -1,0 +1,37 @@
+﻿@model WebSenDa.Models.ViewModel
+
+
+<link href="~/Content/Home/Home.css" rel="stylesheet" />
+
+@using (Html.BeginForm("SearchSP", "SanPham", FormMethod.Get))
+{
+    @*<input type="text" id="searchString" style="width:40%" name="searchString">
+        <input type="submit" value="Search" class="btn btn-outline-info" style="margin-bottom:5px" />*@
+
+    <div class="normalItems">
+        <div class="normalItemsContainer row">
+            @foreach (var sp in Model.ListSanPham)
+            {
+                decimal giaban = sp.Kho.GiaBan;
+                <div class="col-md-3 px-md-3">
+                    <div class="nItem">
+                        <a href="/SanPham/Details/@sp.IDSanPham"><img src="@Url.Content(sp.Hinh)" /></a>
+                        <div class="nItemContent">
+                            <p>@Html.DisplayFor(modle => sp.TenSanPham)</p>
+                            <div class="nItemContent_span">
+                                <span>@giaban vnđ</span>
+                                <span>Còn: @Html.DisplayFor(modle => sp.Kho.SoLuongTon)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @*@Html.PagedListPager(Model.ListSanPham, page => Url.Action("AllSP", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+    </div>    
+}
+
+
+
+
+

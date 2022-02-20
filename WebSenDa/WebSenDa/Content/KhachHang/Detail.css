@@ -1,0 +1,44 @@
+﻿.detail_Info {
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.detail_Info h4{
+    text-align: right;
+    padding: 15px;
+    margin-bottom:0;
+    border-right: 2px solid #0B8B00;
+} 
+.detail_Info h5{
+    padding:15px;
+    margin-bottom:0;
+}
+
+.detail_Avata{
+    text-align: center;
+    padding-top:20px;
+}
+.detail_Avata img{
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+}
+.detail_Avata a {
+    margin-bottom: 50px;
+}
+
+.menu_btn {
+    padding-top: 20px;
+}
+.menu_btn div a {
+    margin: 20px 10px;
+    padding: 10px 0;
+    width: 100%;
+    color: #fff;
+}
+.menu_btn a:hover {
+    color: #111;
+}
+.card{
+    height: 100vh;
+}

@@ -1,0 +1,3 @@
+﻿@model WebSenDa.Models.DiaChi
+
+@Html.DropDownListFor(model => model.IDDiaChi, new SelectList(Model.ListDiaChi.OrderBy(model => model.DiaChi1), "IDDiaChi", "DiaChi1"))

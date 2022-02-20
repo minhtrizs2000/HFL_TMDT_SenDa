@@ -1,0 +1,168 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<link href="~/Content/Detail/Detail.css" rel="stylesheet">
+<link href="~/Content/Home/Home.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="detailContainer row">
+        <div class="col-4">
+            <div id="detailMainImg">
+                <img id="MainImg" src="@Url.Content(Model.sanPham.Hinh)" />
+            </div>
+            <div class="detailSubImg">
+                <img onclick="changeImg(this)" src="@Url.Content(Model.sanPham.Hinh)" />
+                <img onclick="changeImg(this)" src="@Url.Content(Model.sanPham.Hinh1)" />
+                <img onclick="changeImg(this)" src="@Url.Content(Model.sanPham.Hinh2)" />
+                <img onclick="changeImg(this)" src="@Url.Content(Model.sanPham.Hinh3)" />
+            </div>
+        </div>
+        <div class="col-8" style="padding: 0 40px;">
+            <div class="detailTitle">
+                
+                <h1 class="text-success">
+                    @Html.DisplayFor(model => model.sanPham.TenSanPham)
+                </h1>
+                <p style="font-size: 26px; color:red;font-weight:700">
+                    @foreach (var sp in Model.ListSanPham)
+                    {
+                        if (sp.IDSanPham == Model.sanPham.IDSanPham)
+                        {
+                            <span style="text-decoration: line-through;font-size:18px;font-weight:300" class="text-danger">@sp.Kho.GiaBan</span>
+                            decimal giaban = sp.Kho.GiaBan-(sp.Kho.GiaBan*sp.KhuyenMai.GiaTriKhuyenMai/100);
+                            @giaban<span> vnđ</span>
+                        }
+                    }
+                </p>
+            </div>
+            <div class="detailInfo row" style="padding:20px 0">
+                <div class="col-4">
+                    <p>Phí vận chuyển: </p>
+                </div>
+                <div class="col-8">
+                    <p>20.000 vnđ (Tất cả các tỉnh thành)</p>
+                </div>
+                <div class="col-12 text-center text-success">
+                    <span>Có sẵn: </span>
+                    <span> @Html.DisplayFor(model => model.sanPham.Kho.SoLuongTon) </span>
+                    <span>sản phẩm</span>
+                </div>
+            </div>
+            <div class="detailButtons">
+                <a href="/GioHang/AddToCart/@Model.sanPham.IDSanPham" class="btn btn-success">Thêm vào giỏ hàng</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="descContainer">
+        <h1 class="text-success">Mô tả sản phẩm</h1>
+        <p>@Html.DisplayFor(model=>model.sanPham.TenSanPham)</p>
+        <p>
+            @Html.DisplayFor(model => model.sanPham.MoTa)
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="commentContainer">
+        <h1 class="text-success">Đánh giá sản phẩm</h1>
+         
+        @foreach (var dg in Model.ListDanhGia)
+        {
+            if (Model.sanPham.IDSanPham == dg.IDSanPham)
+            {
+                <div class="commentItem row">
+                    <div class="col-2 commentIMG">
+                        <img class="avatar" src="@Url.Content(dg.KhachHang.AnhDaiDien)" />
+                    </div>
+                    <div class="col-10 commentTxt">
+                        <h2 class="text-danger"><strong>@dg.KhachHang.TenKhachHang</strong></h2>
+
+                        @if (dg.Hinh != "~/Content/img/instagram-3814051_960_720-removebg-preview.png")
+                        {
+                            <img src="@Url.Content(dg.Hinh)" />
+                        }
+                        @if (dg.Hinh1 != "~/Content/img/instagram-3814051_960_720-removebg-preview.png")
+                        {
+                            <img src="@Url.Content(dg.Hinh1)" />
+                        }
+                        @if (dg.Hinh2 != "~/Content/img/instagram-3814051_960_720-removebg-preview.png")
+                        {
+                            <img src="@Url.Content(dg.Hinh2)" />
+                        }
+                                                
+                        <h4>@dg.NoiDung</h4>
+
+                        <p>@dg.NgayDanhGia.ToString("dd/MM/yyy")</p>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+
+<div class="container">
+    <div style="margin: 0 40px;">
+        <div class="hotItems">
+            <h1 class="text-success">Top bán chạy</h1>
+            <div class="hotItemsContainer row">
+                @foreach (var sp in Model.ListSanPham)
+                {
+                    if (sp.IDSanPham <= 6)
+                    {
+                        <div class="col-2 px-3">
+                            <div class="hItem">
+                                <a href="/SanPham/Details/@sp.IDSanPham"><img src="@Url.Content(sp.Hinh)" /></a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="normalItems">
+    <h1 class="text-success">Sản phẩm tương tự</h1>
+    <div class="normalItemsContainer row">
+        @{ int count = 0;}
+        @foreach (var sp in Model.ListSanPham)
+        {
+
+            if (sp.IDLoaiSanPham == Model.sanPham.IDLoaiSanPham && count < 4)
+            {
+                count++;
+                decimal giaban = sp.Kho.GiaBan;
+                <div class="col-3 px-3">
+                    <div class="nItem">
+                        <a href="/SanPham/Details/@sp.IDSanPham"><img src="@Url.Content(sp.Hinh)" /></a>
+                        <div class="nItemContent">
+                            <p>@Html.DisplayFor(modle => sp.TenSanPham)</p>
+                            <div class="nItemContent_span">                                 
+                                <span>@giaban vnđ</span>
+                                <span>Còn: @Html.DisplayFor(modle => sp.Kho.SoLuongTon)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="readMoreBtn">
+                    <a href="/SanPham/LocLoaiSP/@sp.IDLoaiSanPham">Xem thêm <br /> <span style='font-size:100px;'>&#8641;</span></a>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/Detail/Detail.js"></script>
+

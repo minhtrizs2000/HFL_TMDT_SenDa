@@ -1,0 +1,108 @@
+﻿@model WebSenDa.Models.KhachHang
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="~/Scripts/scripts.js"></script>
+<h2 class="text-success text-center my-5">Chỉnh sửa thông tin cá nhân</h2>
+
+@using (Html.BeginForm("Edit", "KhachHang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal row p-5 mb-5" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDKhachHang)
+        @Html.HiddenFor(model => model.IDLoaiTaiKhoan)
+        @Html.HiddenFor(model => model.AnhDaiDien)
+        @Html.HiddenFor(model => model.DiemTichLuy)
+
+        <div class="form-group col-4 d-none">
+            @Html.LabelFor(model => model.DiemTichLuy, htmlAttributes: new { @class = "control-label col-md-2 " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiemTichLuy, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.DiemTichLuy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.TenTaiKhoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenTaiKhoan, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.TenTaiKhoan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.TenKhachHang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenKhachHang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenKhachHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-4">
+            @Html.LabelFor(model => model.CMND, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CMND, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CMND, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-4">
+            <a href="/KhachHang/Details/@Model.IDKhachHang" class="btn btn-success ml-3">Trở về</a>
+        </div>
+
+        <div class="form-group col-4">
+            <div class="col-md-10 text-center">
+                <img src="@Url.Content(Model.AnhDaiDien)" width="200" height="200" />
+                <input type="file" name="UploadImage" accept="image/*" onchange="ShowImagePreview(this, document.getElementById('previewImage'))" />
+                @Html.ValidationMessageFor(model => model.AnhDaiDien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-4 text-center">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+</div>
+
+<script>
+    function ShowImagePreview(UploadImage, previewImage) {
+        if (UploadImage.files && UploadImage.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(UploadImage.files[0]);
+        }
+    }
+</script>

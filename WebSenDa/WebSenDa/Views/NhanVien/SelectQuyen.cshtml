@@ -1,0 +1,5 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@Html.DropDownListFor(model => model.quyen.IDQuyen,
+  new SelectList(Model.ListQuyen.OrderBy(model => model.TenQuyen), "IDQuyen", "TenQuyen"), "Chọn quyền", htmlAttributes: new { @class = "form-control" })
+

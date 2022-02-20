@@ -1,0 +1,88 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    h5{
+        font-weight:700
+    }
+</style>
+
+<h2 class="text-center">Chi Tiết Sản Phẩm</h2>
+
+<div>
+    <a class="btn btn-info" href="@Url.Action("Index","QLSanPham")">Quay lại</a>
+</div>
+<div class="row">
+    <div class="col-2 p-3">
+        <h5>Mã sản phẩm</h5>
+        <h4>
+            @Html.DisplayFor(model => model.sanPham.IDSanPham)
+        </h4>
+    </div>
+    <div class="col-4 p-3">
+        <h5>Tên sản phẩm</h5>
+        <h4>
+            @Html.DisplayFor(model => model.sanPham.TenSanPham)
+        </h4>
+    </div>
+    <div class="col-6 p-3">
+        <h5>Hình ảnh</h5>
+        <img src="@Url.Content(Html.DisplayFor(model => model.sanPham.Hinh).ToString())" width="100" height="100" />
+        <img src="@Url.Content(Html.DisplayFor(model => model.sanPham.Hinh1).ToString())" width="100" height="100" />
+        <img src="@Url.Content(Html.DisplayFor(model => model.sanPham.Hinh2).ToString())" width="100" height="100" />
+        <img src="@Url.Content(Html.DisplayFor(model => model.sanPham.Hinh3).ToString())" width="100" height="100" />
+    </div>
+    <div class="col-12 p-3">
+        <h5>Mô tả sản phẩm</h5>
+        @Html.DisplayFor(model => model.sanPham.MoTa)
+    </div>
+    <div class="col-3 p-3">
+        <h5>Khuyến mãi</h5>
+        <h4>@Model.khuyenMai.GiaTriKhuyenMai %</h4>
+    </div>
+    <div class="col-3 p-3">
+        <h5>Loại sản phẩm</h5>
+        @{
+            if (Model.loaiSanPham.IDLoaiSanPham == 1)
+            {
+                <h4>Sen Đá</h4>
+            }
+            else if (Model.loaiSanPham.IDLoaiSanPham == 2)
+            {
+                <h4>Chậu cây</h4>
+            }
+            else if (Model.loaiSanPham.IDLoaiSanPham == 3)
+            {
+                <h4>Giá thể</h4>
+            }
+        }
+    </div>
+    <div class="col-3 p-3">
+        @{
+            if (Model.loaiSenDa != null)
+            {
+                <h5>Loại sen đá </h5>
+                <h4>@Model.loaiSenDa.TenLoaiSenDa</h4>
+            }
+            if (Model.loaiChauCay != null)
+            {
+                <h5>Loại chậu cây </h5>
+                <h4>@Model.loaiChauCay.TenLoaiChauCay</h4>
+            }
+            if (Model.loaiGiaThe != null)
+            {
+                <h5>Loại giá thể </h5>
+                <h4>@Model.loaiGiaThe.TenLoaiGiaThe</h4>
+            }
+        }
+    </div>
+    <div class="col-3 p-3">
+        <a class="btn btn-success" href="@Url.Action("AddDonNhap",new { id= Model.sanPham.IDSanPham})">Nhập đơn nhập kho</a>
+    </div>
+
+
+</div>

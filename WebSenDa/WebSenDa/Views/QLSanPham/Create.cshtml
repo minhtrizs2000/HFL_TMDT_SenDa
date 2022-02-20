@@ -1,0 +1,171 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<h2 class="text-center">Thêm Sản Phẩm</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.IDSanPham, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.IDSanPham, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.IDSanPham, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+    @Html.HiddenFor(m => m.sanPham.IDSanPham);
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.IDLoaiSanPham, "IDLoaiSanPham", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            
+            @Html.DropDownListFor(m => m.sanPham.IDLoaiSanPham, (SelectList)ViewBag.ListLoaiSanPham, "-- Chọn Loại Sản Phẩm --",htmlAttributes: new {@class = "form-control col-md-10 col-sm-8 text-align-center" })
+            @Html.ValidationMessageFor(model => model.sanPham.IDLoaiSanPham, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*@Html.DropDownList("IDLoaiTaiKhoan", null , htmlAttributes: new { @class = "form-control" })*@
+    @*@{Html.RenderAction("SelectLoaiTK", "NhanVien");}*@
+   
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.IDLoaiSenDa, "IDLoaiSenDa", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+
+            @Html.DropDownListFor(m => m.sanPham.IDLoaiSenDa, (SelectList)ViewBag.ListLoaiSenDa, "-- Chọn Loại Sen Đá --", htmlAttributes: new { @class = "form-control col-md-10 col-sm-8 text-align-center" })
+            @Html.ValidationMessageFor(model => model.sanPham.IDLoaiSenDa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.IDLoaiChauCay, "IDLoaiChauCay", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+
+            @Html.DropDownListFor(m => m.sanPham.IDLoaiChauCay, (SelectList)ViewBag.ListLoaiChauCay, "-- Chọn Loại Chậu Cây --", htmlAttributes: new { @class = "form-control col-md-10 col-sm-8 text-align-center" })
+            @Html.ValidationMessageFor(model => model.sanPham.IDLoaiChauCay, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.IDLoaiGiaThe, "IDLoaiGiaThe", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+
+            @Html.DropDownListFor(m => m.sanPham.IDLoaiGiaThe, (SelectList)ViewBag.ListLoaiGiaThe, "-- Chọn Loại Gia The --", htmlAttributes: new { @class = "form-control col-md-10 col-sm-8 text-align-center" })
+            @Html.ValidationMessageFor(model => model.sanPham.IDLoaiGiaThe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.IDKhuyenMai, "IDKhuyenMai", htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+
+            @Html.DropDownListFor(m => m.sanPham.IDKhuyenMai, (SelectList)ViewBag.ListKhuyenMai, "-- Chọn Loại Khuyến Mãi --", htmlAttributes: new { @class = "form-control col-md-10 col-sm-8 text-align-center" })
+            @Html.ValidationMessageFor(model => model.sanPham.IDKhuyenMai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.TenSanPham, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.TenSanPham, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.TenSanPham, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.Hinh, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.Hinh, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.Hinh, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.Hinh1, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.Hinh1, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.Hinh1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.Hinh2, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.Hinh2, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.Hinh2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.Hinh3, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.Hinh3, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.Hinh3, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.MoTa, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.MoTa, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.MoTa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*<div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.kho.GiaBan, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kho.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.kho.GiaBan, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+    @*<div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.sanPham.MoTa, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.sanPham.MoTa, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.sanPham.MoTa, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.nhapKho.SoLuongNhap, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nhapKho.SoLuongNhap, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.nhapKho.SoLuongNhap, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.nhapKho.GiaNhap, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nhapKho.GiaNhap, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.nhapKho.GiaNhap, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group wrap-flex-align-center">
+        @Html.LabelFor(model => model.kho.GiaBan, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.kho.GiaBan, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8" } })
+            @Html.ValidationMessageFor(model => model.kho.GiaBan, "", new { @class = "text-danger" })
+            @if (ViewBag.Error != null)
+            {
+                <p style="color:red">@ViewBag.Error</p>
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Lưu" class="btn btn-primary" style="width: 80px" />
+        </div>
+    </div>
+</div>
+}
+
+<div class="col-md-offset-2 col-md-10 form-group">
+    <a class="btn btn-info" href="@Url.Action("Index","QLSanPham")">Quay lại</a>
+</div>

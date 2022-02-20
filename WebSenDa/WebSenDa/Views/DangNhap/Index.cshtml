@@ -1,0 +1,33 @@
+﻿@model WebSenDa.Models.TaiKhoanModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutLoginRegister.cshtml";
+}
+
+@using (Html.BeginForm("Index", "DangNhap"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group row">
+        <div class="col-4 col-form-label">@Html.LabelFor(model => model.Email)</div>
+        @Html.TextBoxFor(model => model.Email, new { style = "field-validation-error", @Class = "form-control col-8" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div class="form-group row">
+        <div class="col-4 col-form-label">@Html.LabelFor(model => model.MatKhau)</div>
+        @Html.TextBoxFor(model => model.MatKhau, new { type = "password", style = "field-validation-error", @Class = "col-8 form-control" })
+        @Html.ValidationMessageFor(model => model.MatKhau)
+    </div>
+    <div class="form-group row justify-content-center">
+        @if (ViewBag.ErrorInfo == null)
+        {
+            <p class="text-danger mb-0">@ViewBag.Error</p>
+        }
+    </div>
+    <div class="d-flex justify-content-end"><a href="/DangNhap/Reset" style="font-size:12px; padding-bottom:10px">Quên mật khẩu?</a></div>
+    <div class="d-flex justify-content-around">
+        @Html.ActionLink("< Trang Chủ", "Index", "SanPham", null, new { @class = "btn btn-outline-success" })
+        <button type="submit" class="btn btn-success">Đăng nhập</button>
+    </div>
+    <p class="pt-5">Bạn chưa có tài khoản? @Html.ActionLink("Đăng ký", "Index", "DangKy", null, new { @class = "" }) ngay!</p>
+}

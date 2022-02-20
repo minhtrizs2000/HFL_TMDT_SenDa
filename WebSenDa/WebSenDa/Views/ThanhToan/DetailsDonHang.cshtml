@@ -1,0 +1,78 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+<link href="~/Content/Cart/ThanhToan.css" rel="stylesheet" />
+@foreach (var dh in Model.ListDonHang)
+{
+    if (dh.IDDonHang == Model.chiTietDonHang.IDDonHang)
+    {
+        <p>
+            <a class="btn btn-outline-success mt-5 ml-4" href="/ThanhToan/ListDonHang/@dh.IDKhachHang"><i class="fa fa-arrow-left"></i> Trở về</a>
+        </p>
+    }
+}
+<div class="thanhToanContainer">
+    <h1 class="text-center p-4" style="color: #008042; font-size:40px;">ĐƠN HÀNG #@Model.donHang.IDDonHang</h1>
+    <div class="receiptContainer">
+        <div class="row">
+            <h5 class="col-3 text-right">Tên khách hàng: </h5>
+            <h5 class="col-2">
+                @Html.DisplayFor(model => model.khachHang.TenKhachHang)
+            </h5>
+            <h5 class="col-2 text-right">Địa chỉ: </h5>
+            <h5 class="col-5">
+                @Html.DisplayFor(model => model.donHang.DiaChi)
+            </h5>
+            <h5 class="col-3 text-right">Số điện thoại: </h5>
+            <h5 class="col-2">
+                @Html.DisplayFor(model => model.khachHang.SoDienThoai)
+            </h5>
+            <h5 class="col-2 text-right">Email: </h5>
+            <h5 class="col-5">
+                @Html.DisplayFor(model => model.khachHang.Email)
+            </h5>
+        </div>
+        <div class="receiptItems">
+            @{ 
+                        var total = (decimal)0;
+                        foreach (var ctdh in Model.ListChiTietDonHang)
+                        {
+                            if (ctdh.IDDonHang == Model.donHang.IDDonHang)
+                            {
+                                decimal thanhtien = ctdh.DonGia * ctdh.SoLuong;
+                            <div class="row py-2">
+                                <div class="col-2 text-center">
+                                    <img src="@Url.Content(ctdh.SanPham.Hinh)" height="50" width="50" />
+                                </div>
+                                <p class="col-4">@ctdh.SanPham.TenSanPham</p>
+                                <p class="col-2">@ctdh.DonGia</p>
+                                <p class="col-2">@ctdh.SoLuong</p>
+                                <p class="col-2">@thanhtien VNĐ</p>
+                            </div>
+                            total += thanhtien;
+                }
+            }
+                }
+
+        </div>
+    </div>
+    <div class="receiptSum">
+        <div style="display:flex;justify-content:right;align-items:center">
+            <h5 class="mx-5">TỔNG HÓA ĐƠN: </h5>
+            <span style="color:#f44; font-size: 30px;" class="pr-5">@total VNĐ</span>
+        </div>
+        <br />
+        <div class="text-right w-100">
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,108 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+
+@if (Model != null)
+{
+    <div class="mCart" id="cardWrap">
+
+        <div class="card"></div>
+        <div class="cardContent">
+            <h1 class="text-center p-4" style="color: #00ff84; font-size:40px;">GIỎ HÀNG CỦA BẠN</h1>
+            <div class="tableContent">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            @*<th scope="col">STT</th>*@
+                            <th scope="col">Hình ảnh</th>
+                            <th scope="col">Tên sản phẩm</th>
+                            <th scope="col">Đơn Giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Thành tiền</th>
+                            <th scope="col"><i class="fa fa-cogs"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody class="tableBody">
+                        @foreach (var item in Model.Items)
+                        {
+
+                            decimal giaban;
+                            giaban = item.sanPham.Kho.GiaBan - (item.sanPham.Kho.GiaBan * item.sanPham.KhuyenMai.GiaTriKhuyenMai / 100);
+                            Session["dongia"] = giaban;
+
+                            decimal total;
+                            total = item.soLuongTon * giaban;
+                            Session["thanhtien"] = total;
+
+                            <tr>
+                                @*<th scope="row">1</th>*@
+                                <td><img src="@Url.Content(item.sanPham.Hinh)" height="50" width="50" /></td>
+                                <td>@Html.DisplayFor(model => item.sanPham.TenSanPham)</td>
+                                <td>@giaban VNĐ</td>
+                                <td>
+                                    @using (Html.BeginForm("Update_Cart_Quantity", "GioHang"))
+                                    {
+                                        <input type="hidden" value="@item.sanPham.IDSanPham" name="iDSanPham" />
+                                        <input type="number" value="@item.soLuongTon" name="soLuongTon" min="1" />
+                                        <input type="submit" value="Update" />
+                                    }
+                                </td>
+                                <td>@total VNĐ</td>
+                                <td>
+                                    <a class="btn btn-danger" href="/GioHang/RemoveCart/@item.sanPham.IDSanPham">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div style="display:flex;justify-content:right;align-items:center">
+                <h6 class="mx-5">Phí vận chuyển: </h6>
+                <span style="color:#f44; font-size: 20px;margin-right:250px" class="pr-5">20.000 VNĐ</span>
+            </div>
+            <div class="tableFooter">
+                <a class="btn btn-outline-success" href="@Url.Action("Index","SanPham")"><i class="fa fa-arrow-left"></i> Tiếp tục mua hàng</a>
+                <div style="display:flex;justify-content:center;align-items:center">
+                    <h3 class="ml-5">TỔNG HÓA ĐƠN: </h3>
+                    <span style="color:#f44; font-size: 50px">@Model.Total_money() VNĐ</span>
+                </div>
+                <br />
+                @if (Session["Email"] == null)
+                {
+                    @*<a href="/DangNhap/Index" class="btn btn-outline-success">Đặt Mua</a>*@
+                    <a class="btn btn-outline-success" href="@Url.Action("Index","DangNhap")"> Đặt hàng</a>
+                }
+                else
+                {
+                    foreach (var kh in Model.ListKhachHang)
+                    {
+                        if (kh.Email == (string)Session["Email"])
+                        {
+                            @*<a href="/ThanhToan/Index/@kh.IDKhachHang" class="btn btn-outline-success">Đặt Mua</a>*@
+                            <a class="btn btn-outline-success" href="/ThanhToan/Index/@kh.IDKhachHang"> Đặt hàng</a>
+                        }
+
+                    }
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="ball ball1"></div>
+    <div class="ball ball2"></div>
+    <div class="ball ball3"></div>
+}
+else
+{
+    @Html.Partial("EmptyCart")
+}
+

@@ -1,0 +1,168 @@
+﻿@*@model IEnumerable<WebSenDa.Models.ViewModel>*@
+
+@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+}
+<link href="~/Content/Home/Home.css" rel="stylesheet" />
+
+<div class="mt-4">
+    <div class="mBanner row">
+        <div class="col-1"></div>
+        <div class="col-2">
+            <div class="cardBanner">
+                <div class="itemBanner ibanner1">
+                    <div class="ibannerFront">
+                        <img src="~/Images/Banners/Banner01.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="cardBanner">
+                <div class="itemBanner ibanner2">
+                    <div class="ibannerFront">
+                        <img src="~/Images/Banners/Banner02.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="cardBanner">
+                <div class="itemBanner ibanner1">
+                    <div class="ibannerFront">
+                        <img src="~/Images/Banners/Banner03.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="cardBanner">
+                <div class="itemBanner ibanner2">
+                    <div class="ibannerFront">
+                        <img src="~/Images/Banners/Banner04.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="cardBanner">
+                <div class="itemBanner ibanner1">
+                    <div class="ibannerFront">
+                        <img src="~/Images/Banners/Banner05.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-md-2 px-md-3">
+            <div class="cardBanner">
+                <div class="itemBanner ibanner2">
+                    <div class="ibannerFront">
+                        <img src="~/Images/Banners/Banner06.jpg" />
+                    </div>
+                    <div class="ibannerBack">
+                        <h2>ABC</h2>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+    <div class="hotItems">
+        <h3 class="py-2">Top Sản Phẩm Bán Chạy</h3>
+        <div class="hotItemsContainer row">
+            @foreach (var sp in Model.ListSanPham)
+            {
+                if (sp.IDSanPham <= 6)
+                {
+                    <div class="col-md-2 px-md-3">
+                        <div class="hItem">
+                            <a href="/SanPham/Details/@sp.IDSanPham"><img src="@Url.Content(sp.Hinh)" /></a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    break;
+                }  
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="normalItems">
+    @{ int count = 0;}
+    @foreach (var lsp in Model.ListLoaiSanPham)
+    {
+        <h1 class="mt-5">@Html.DisplayFor(model => lsp.TenLoaiSanPham)</h1>
+        
+        <div class="normalItemsContainer row">
+            @foreach (var sp in Model.ListSanPham)
+            {
+                if (sp.IDLoaiSanPham == lsp.IDLoaiSanPham)
+                {
+                    if (count < 8)
+                    {
+                        count++;
+                        decimal giaban = sp.Kho.GiaBan;
+                        <div class="col-3 px-3">
+                            <div class="nItem">
+                                <a href="/SanPham/Details/@sp.IDSanPham"><img src="@Url.Content(sp.Hinh)" /></a>
+                                <div class="nItemContent">
+                                    <p>@Html.DisplayFor(modle => sp.TenSanPham)</p>
+                                    <div class="nItemContent_span">
+                                        <span>@giaban vnđ</span>
+                                        <span>Còn: @Html.DisplayFor(modle => sp.Kho.SoLuongTon)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="readMoreBtn">
+                            <a href="SanPham/LocLoaiSP/@sp.IDLoaiSanPham">Xem thêm <br /> <span style='font-size:100px;'>&#8641;</span></a>
+                        </div>
+                    }
+                    else
+                    {
+                        count = 0;
+                        break;
+                    }
+                }
+            }
+        </div>
+    }   
+</div>
+
+<div class="promotion">
+    <h1>Tích lũy điểm thưởng khi mua đơn hàng có giá trị từ 50k để đổi được nhiều Voucher giảm giá siêu hấp dẫn từ shop!</h1>
+</div>
+
+<div class="mNews">
+    <h1>Tin tức</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="~/Images/News/new1.jpg" height="500" />
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 row">
+                    <div class="col-md-6">
+                        <img src="~/Images/News/new2.jpg" height="250" />
+                    </div>
+                    <div class="col-md-6">
+                        <img src="~/Images/News/new3.jpg" height="250" />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <img src="~/Images/News/new4.jpg" height="250" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <img src="~/Images/News/new5.jpg" height="500" />
+        </div>
+    </div>
+</div>
+

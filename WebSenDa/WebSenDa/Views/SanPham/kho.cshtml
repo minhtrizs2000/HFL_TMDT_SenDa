@@ -1,0 +1,32 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "kho";
+}
+
+<h2>kho</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach(var k in Model.ListKho) {
+    <tr>
+        <td>
+            @k.IDSanPham
+            @k.SanPham.TenSanPham
+            @k.GiaBan
+            @k.SoLuongTon
+            
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,43 @@
+﻿
+
+@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutProfile.cshtml";
+}
+
+<link href="~/Content/KhachHang/Detail.css" rel="stylesheet" />
+
+<div class="col-12">
+    <div class="row detail_Info">
+        <div class="col-9 row">
+
+            <h4 class="col-4">Họ tên</h4>
+            <h5 class="col-8">
+                @Html.DisplayFor(model => model.khachHang.TenKhachHang)
+            </h5>
+            <h4 class="col-4">Số điện thoại</h4>
+            <h5 class="col-8">
+                @Html.DisplayFor(model => model.khachHang.SoDienThoai)
+            </h5>
+            <h4 class="col-4">CCCD/CMND</h4>
+            <h5 class="col-8">
+                @Html.DisplayFor(model => model.khachHang.CMND)
+            </h5>
+            <h4 class="col-4">Email</h4>
+            <h5 class="col-8">
+                @Html.DisplayFor(model => model.khachHang.Email)
+            </h5>
+        </div>
+        <div class="col-3 detail_Avata">
+            <img class="avatar" src="@Url.Content(Model.khachHang.AnhDaiDien)" />
+            <br />
+            <p style="font-size:31px; word-break:break-word;">
+                @Html.DisplayFor(model => model.khachHang.TenTaiKhoan)
+            </p>
+            <br />
+            <a href="/KhachHang/Edit/@Model.khachHang.IDKhachHang" class="btn btn-outline-success"><i class="fa fa-edit"></i>Sửa thông tin</a>
+        </div>
+    </div>
+</div>

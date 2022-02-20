@@ -1,0 +1,91 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "ListDonHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/KhachHang/Detail.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-12 menu_btn row">
+        <div class="col-3">
+            <a class="btn btn-success" href="@Url.Action("Index","SanPham")">Tiếp tục mua hàng</a>
+        </div>
+        <div class="col-3">
+            <a href="/KhachHang/Details/@Model.khachHang.IDKhachHang" class="btn btn-success">Tài khoản</a>
+        </div>
+        <div class="col-3">
+            <a href="/KhachHang/IndexDiaChi/@Model.khachHang.IDKhachHang" class="btn btn-success">Địa chỉ</a>
+        </div>
+        <div class="col-3">
+            <a href="/ThanhToan/ListDonHang/@Model.khachHang.IDKhachHang" class="btn btn-success">Đơn hàng</a>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom:100px ;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; width:100%;">
+    <h1 class="text-center col-12 py-2">Danh sách đơn hàng <strong class="text-secondary">CHỜ DUYỆT</strong></h1>
+    <div class="col-12 d-flex justify-content-between pb-5">
+        <a class="btn btn-info" href="/ThanhToan/ListDonHang/@Model.khachHang.IDKhachHang">Tất cả</a>
+        <a class="btn btn-outline-info" href="/ThanhToan/ListDonHangChoDuyet/@Model.khachHang.IDKhachHang">Chờ duyệt</a>
+        <a class="btn btn-info" href="/ThanhToan/ListDonHangDaDuyet/@Model.khachHang.IDKhachHang">Đã duyệt-Chờ vận chuyển</a>
+        <a class="btn btn-info" href="/ThanhToan/ListDonHangDangVanChuyen/@Model.khachHang.IDKhachHang">Đang vận chuyển</a>
+        <a class="btn btn-info" href="/ThanhToan/ListDonHangDaNhan/@Model.khachHang.IDKhachHang">Đã nhận</a>
+        <a class="btn btn-info" href="/ThanhToan/ListDonHangDaHuy/@Model.khachHang.IDKhachHang">Đã hủy</a>
+    </div>
+    <div class="col-12">
+        <table class="table text-center">
+            <tr>
+                <th scope="col">Mã đơn</th>
+                <th scope="col">Địa chỉ</th>
+                <th scope="col">SĐT</th>
+                <th scope="col">Ngày đặt</th>
+                <th scope="col">Phương thức thanh toán</th>
+                <th scope="col">Thành tiền</th>
+                <th scope="col" colspan="2"><i class="fa fa-cog"></i></th>
+            </tr>
+            @foreach (var dh in Model.ListDonHang)
+            {
+                if (dh.IDKhachHang == Model.khachHang.IDKhachHang && dh.TrangThai == 0)
+                {
+                    <tr>
+                        <td>@dh.IDDonHang</td>
+                        <td>@dh.DiaChi</td>
+                        <td>@dh.KhachHang.SoDienThoai</td>
+                        <td>@dh.NgayDat.Date.ToString("dd/MM/yyyy")</td>
+                        @if (dh.PhuongThucThanhToan == 1)
+                        {
+                            <td>Trả sau</td>
+                        }
+                        else if (dh.PhuongThucThanhToan == 2)
+                        {
+                            <td>Chuyển khoản</td>
+                        }
+
+                        <td>
+                            @{
+                                decimal amount = 0;
+                                foreach (var cthd in Model.ListChiTietDonHang)
+                                {
+                                    if (dh.IDDonHang == cthd.IDDonHang)
+                                    {
+                                        amount += cthd.DonGia * cthd.SoLuong;
+                                    }
+                                }
+                                @amount
+                            } VNĐ
+                        </td>
+                        <td><a href="/ThanhToan/DetailsDonHang/@dh.IDDonHang" class="btn btn-info btn-sm">Xem</a></td>
+                        @if (dh.TrangThai == 0 || dh.TrangThai == 1)
+                        {
+                            <td><a href="/ThanhToan/HuyDonHang/@dh.IDDonHang" class="btn btn-danger btn-sm">Hủy</a></td>
+                        }
+                    </tr>
+
+
+                }
+
+
+            }
+        </table>
+    </div>
+</div>

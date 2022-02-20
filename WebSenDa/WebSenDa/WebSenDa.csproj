@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{57CE445F-0653-45CC-B50A-C66781CD17F5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSenDa</RootNamespace>
+    <AssemblyName>WebSenDa</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44337</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.9.0.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>..\packages\Portable.BouncyCastle.1.9.0\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=2021.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.2021.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=3.0.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.3.0.0\lib\net47\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.3.0.0\lib\net47\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\KhachHang\DangKyController.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
+    <Compile Include="Controllers\KhachHang\DanhGiaSanPhamController.cs" />
+    <Compile Include="Controllers\KhachHang\GioHangController.cs" />
+    <Compile Include="Controllers\KhachHang\KhachHangController.cs" />
+    <Compile Include="Controllers\KhachHang\SanPhamController.cs" />
+    <Compile Include="Controllers\KhachHang\ThanhToanController.cs" />
+    <Compile Include="Controllers\NhanVien\DonHangController.cs" />
+    <Compile Include="Controllers\NhanVien\KhachHang_NVController.cs" />
+    <Compile Include="Controllers\NhanVien\QLSanPhamController.cs" />
+    <Compile Include="Controllers\QuanLy\BaoCaoController.cs" />
+    <Compile Include="Controllers\QuanLy\KhachHang_QLController.cs" />
+    <Compile Include="Controllers\QuanLy\NhanVienController.cs" />
+    <Compile Include="Controllers\QuanLy\QuyenController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDonHang.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhGia.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBSenDa.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSenDa.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBSenDa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBSenDa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSenDa.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiaChi.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonHang.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IFormFile.cs" />
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kho.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhuyenMai.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiChauCay.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiGiaThe.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSenDa.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiTaiKhoan.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhanVien.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhapKho.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quyen.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResetModel.cs" />
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>DBSenDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\ViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Admin\Main.css" />
+    <Content Include="Content\Admin\styleAdmin.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Cart\Cart.css" />
+    <Content Include="Content\Cart\ThanhToan.css" />
+    <Content Include="Content\Detail\Detail.css" />
+    <Content Include="Content\Home\Home.css" />
+    <Content Include="Content\img\239983755_513212333409423_3072406451765634563_n.png" />
+    <Content Include="Content\img\add-user-icon-design-blank-avatar-placeholder-vector-34269036-removebg-preview.png" />
+    <Content Include="Content\img\chau-dat-nung-trung-hoa-tiet.jpg" />
+    <Content Include="Content\img\chaunau.jpg" />
+    <Content Include="Content\img\chaunau1.jpg" />
+    <Content Include="Content\img\chaunau2.jpg" />
+    <Content Include="Content\img\chaunau3.jpg" />
+    <Content Include="Content\img\chuoingocdung.jpg" />
+    <Content Include="Content\img\chuoingocdung1.jpg" />
+    <Content Include="Content\img\chuoingocdung2.jpg" />
+    <Content Include="Content\img\chuoingocdung3.jpg" />
+    <Content Include="Content\img\devuongdo.jpg" />
+    <Content Include="Content\img\devuongdo1.jpg" />
+    <Content Include="Content\img\devuongdo2.jpg" />
+    <Content Include="Content\img\devuongdo3.jpg" />
+    <Content Include="Content\img\daquang1.jpg" />
+    <Content Include="Content\img\daquang2.jpg" />
+    <Content Include="Content\img\daquang3.jpg" />
+    <Content Include="Content\img\daquang.jpg" />
+    <Content Include="Content\img\dollartrang1.jpg" />
+    <Content Include="Content\img\dollartrang2.jpg" />
+    <Content Include="Content\img\dollartrang3.jpg" />
+    <Content Include="Content\img\dollartrang.jpg" />
+    <Content Include="Content\img\ffdb85a979df9c80342a819715f46be9.jpg" />
+    <Content Include="Content\img\images%283%29.jpg" />
+    <Content Include="Content\img\images%284%29.jpg" />
+    <Content Include="Content\img\images%286%29.jpg" />
+    <Content Include="Content\img\images%287%29.jpg" />
+    <Content Include="Content\img\instagram-3814051_960_720-removebg-preview.png" />
+    <Content Include="Content\img\masato.jpg" />
+    <Content Include="Content\img\masato1.jpg" />
+    <Content Include="Content\img\masato2.jpg" />
+    <Content Include="Content\img\masato3.jpg" />
+    <Content Include="Content\img\nhatnguyet2.jpg" />
+    <Content Include="Content\img\nhatnguyet3.jpg" />
+    <Content Include="Content\img\nhatnguyet1.jpg" />
+    <Content Include="Content\img\nhatnguyet.jpg" />
+    <Content Include="Content\img\perlite.jpg" />
+    <Content Include="Content\img\perlite1.jpg" />
+    <Content Include="Content\img\perlite2.jpg" />
+    <Content Include="Content\img\perlite3.jpg" />
+    <Content Include="Content\img\sedumcotrang1.jpg" />
+    <Content Include="Content\img\sedumcotrang2.jpg" />
+    <Content Include="Content\img\sedumcotrang3.jpg" />
+    <Content Include="Content\img\sedumcotrang.jpg" />
+    <Content Include="Content\img\sedumhoahong1.jpg" />
+    <Content Include="Content\img\sedumhoahong2.jpg" />
+    <Content Include="Content\img\sedumhoahong3.jpg" />
+    <Content Include="Content\img\sedumhoahong.jpg" />
+    <Content Include="Content\img\sedumnhotim.jpg" />
+    <Content Include="Content\img\sedumnhotim1.jpg" />
+    <Content Include="Content\img\sedumnhotim2.jpg" />
+    <Content Include="Content\img\sedumnhotim3.jpg" />
+    <Content Include="Content\img\soilmix.jpg" />
+    <Content Include="Content\img\tanchamtim.jpg" />
+    <Content Include="Content\img\tanchamtim1.jpg" />
+    <Content Include="Content\img\tanchamtim2.jpg" />
+    <Content Include="Content\img\tanchamtim3.jpg" />
+    <Content Include="Content\img\tanchamvang.jpg" />
+    <Content Include="Content\img\tanchamvang1.jpg" />
+    <Content Include="Content\img\tanchamvang2.jpg" />
+    <Content Include="Content\img\tanchamvang3.jpg" />
+    <Content Include="Content\img\dattrong2.jpg" />
+    <Content Include="Content\img\xithan.jpg" />
+    <Content Include="Content\img\xithan1.jpg" />
+    <Content Include="Content\img\xithan2.jpg" />
+    <Content Include="Content\img\xithan3.jpg" />
+    <Content Include="Content\img\dattrong3.jpg" />
+    <Content Include="Content\KhachHang\Detail.css" />
+    <Content Include="Content\KhachHang\Edit.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\Banners\Banner01.jpg" />
+    <Content Include="Images\Banners\Banner02.jpg" />
+    <Content Include="Images\Banners\Banner03.jpg" />
+    <Content Include="Images\Banners\Banner04.jpg" />
+    <Content Include="Images\Banners\Banner05.jpg" />
+    <Content Include="Images\Banners\Banner06.jpg" />
+    <Content Include="Images\Logo\footer.jpg" />
+    <Content Include="Images\Logo\Logo.jpg" />
+    <Content Include="Images\News\new1.jpg" />
+    <Content Include="Images\News\new2.jpg" />
+    <Content Include="Images\News\new3.jpg" />
+    <Content Include="Images\News\new4.jpg" />
+    <Content Include="Images\News\new5.jpg" />
+    <Content Include="Images\Products\sp01.jpg" />
+    <Content Include="Images\Products\sp02.jpg" />
+    <Content Include="Images\Products\sp03.jpg" />
+    <Content Include="Images\Products\sp04.jpg" />
+    <Content Include="Models\DBSenDa.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSenDa.edmx</DependentUpon>
+      <LastGenOutput>DBSenDa.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DBSenDa.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBSenDa.edmx</DependentUpon>
+      <LastGenOutput>DBSenDa.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Detail\Detail.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <EntityDeploy Include="Models\DBSenDa.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBSenDa.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBSenDa.edmx.diagram">
+      <DependentUpon>DBSenDa.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Main.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\SanPham\Index.cshtml" />
+    <Content Include="Views\SanPham\Details.cshtml" />
+    <Content Include="Views\SanPham\LocLoaiSP.cshtml" />
+    <Content Include="Views\SanPham\AllSP.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\GioHang\Index.cshtml" />
+    <Content Include="Views\GioHang\EmptyCart.cshtml" />
+    <Content Include="Views\GioHang\BagCart.cshtml" />
+    <Content Include="Views\SanPham\LocGiaSP.cshtml" />
+    <Content Include="Views\SanPham\SearchSP.cshtml" />
+    <Content Include="Views\SanPham\LocLoaiSD.cshtml" />
+    <Content Include="Views\SanPham\LocLoaiCC.cshtml" />
+    <Content Include="Views\SanPham\LocLoaiGT.cshtml" />
+    <Content Include="Views\DangNhap\Index.cshtml" />
+    <Content Include="Views\ThanhToan\Index.cshtml" />
+    <Content Include="Views\ThanhToan\ThanhToanThanhCong.cshtml" />
+    <Content Include="Views\KhachHang\Details.cshtml" />
+    <Content Include="Views\KhachHang\IndexDiaChi.cshtml" />
+    <Content Include="Views\ThanhToan\ListDonHang.cshtml" />
+    <Content Include="Views\ThanhToan\DetailsDonHang.cshtml" />
+    <Content Include="Views\SanPham\kho.cshtml" />
+    <Content Include="Views\ThanhToan\HuyDonThatBai.cshtml" />
+    <Content Include="Views\ThanhToan\HuyDonHang.cshtml" />
+    <Content Include="Views\ThanhToan\HuyDonThanhCong.cshtml" />
+    <Content Include="Views\KhachHang\Edit.cshtml" />
+    <Content Include="Views\KhachHang\SelectLTK.cshtml" />
+    <Content Include="Views\DangKy\Index.cshtml" />
+    <Content Include="Views\ThanhToan\DaNhanHang.cshtml" />
+    <Content Include="Views\DanhGiaSanPham\Index.cshtml" />
+    <Content Include="Views\DanhGiaSanPham\Create.cshtml" />
+    <Content Include="Views\DanhGiaSanPham\DanhGiaThanhCong.cshtml" />
+    <Content Include="Views\ThanhToan\ListDonHangChoDuyet.cshtml" />
+    <Content Include="Views\ThanhToan\ListDonHangDaDuyet.cshtml" />
+    <Content Include="Views\ThanhToan\ListDonHangDangVanChuyen.cshtml" />
+    <Content Include="Views\ThanhToan\ListDonHangDaNhan.cshtml" />
+    <Content Include="Views\ThanhToan\ListDonHangDaHuy.cshtml" />
+    <Content Include="Views\Shared\_LayoutLoginRegister.cshtml" />
+    <Content Include="Views\Shared\_LayoutProfile.cshtml" />
+    <Content Include="Views\KhachHang\EditDiaChi.cshtml" />
+    <Content Include="Views\DonHang\Detail.cshtml" />
+    <Content Include="Views\DonHang\Index.cshtml" />
+    <Content Include="Views\KhachHang_QL\Detail.cshtml" />
+    <Content Include="Views\KhachHang_QL\Index.cshtml" />
+    <Content Include="Views\KhachHang_NV\Detail.cshtml" />
+    <Content Include="Views\KhachHang_NV\Index.cshtml" />
+    <Content Include="Views\NhanVien\Create.cshtml" />
+    <Content Include="Views\NhanVien\Details.cshtml" />
+    <Content Include="Views\NhanVien\Edit.cshtml" />
+    <Content Include="Views\NhanVien\Index.cshtml" />
+    <Content Include="Views\NhanVien\SelectQuyen.cshtml" />
+    <Content Include="Views\QLSanPham\AddDonNhap.cshtml" />
+    <Content Include="Views\QLSanPham\Create.cshtml" />
+    <Content Include="Views\QLSanPham\Details.cshtml" />
+    <Content Include="Views\QLSanPham\Edit.cshtml" />
+    <Content Include="Views\QLSanPham\Index.cshtml" />
+    <Content Include="Views\Quyen\Create.cshtml" />
+    <Content Include="Views\Quyen\Edit.cshtml" />
+    <Content Include="Views\Quyen\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\DangNhap\Reset.cshtml" />
+    <Content Include="Views\BaoCao\Index.cshtml" />
+    <Content Include="Views\BaoCao\locNam.cshtml" />
+    <Content Include="Views\BaoCao\Details.cshtml" />
+    <Content Include="Views\DanhGiaSanPham\EditDanhGia.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AllSanPham\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54427</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44337/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

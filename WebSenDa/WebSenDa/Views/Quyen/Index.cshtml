@@ -1,0 +1,36 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{ 
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    }
+
+<h2 class="text-center font-weight-bold">Danh Sách Quyền</h2>
+
+<a href="@Url.Action("Create","Quyen")" class="btn btn-primary user-btn-them mt-3 mb-3">Thêm mới quyền</a>
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.quyen.IDQuyen)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.quyen.TenQuyen)</th>
+            <th scope="col" class="text-center"><i class="fa fa-cog"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListQuyen)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDQuyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenQuyen)
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-warning mr-3" href="@Url.Action("Edit", new { id = item.IDQuyen })"><span style="margin-right:0px" class="fas fa-pencil-alt"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

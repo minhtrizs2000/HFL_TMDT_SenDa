@@ -1,0 +1,102 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+<link href="~/Content/Cart/ThanhToan.css" rel="stylesheet" />
+
+
+<div class="thanhToanContainer">
+    <h1 class="text-center p-4" style="color: #008042; font-size:40px;">Cảm ơn anh/chị đã mua hàng bên shop</h1>
+    <div class="receiptContainer">
+        <div class="receiptItems">
+            <table class="table table-borderless">
+                <tr>
+                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Đơn giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Thành tiền</th>
+                    <th scope="col" class="text-center"><i class="fa fa-cog"></i></th>
+                </tr>
+                @foreach (var ctdh in Model.ListChiTietDonHang)
+                {
+                    int ldg = 0;
+                    <tr>
+                        @if (ctdh.IDDonHang == Model.donHang.IDDonHang)
+                        {
+                            decimal thanhtien = ctdh.DonGia * ctdh.SoLuong;
+
+                            <td><img src="@Url.Content(ctdh.SanPham.Hinh)" height="50" width="50" /></td>
+                            <td>@ctdh.SanPham.TenSanPham</td>
+                            <td>@ctdh.DonGia</td>
+                            <td>@ctdh.SoLuong</td>
+                            <td>@thanhtien</td>
+                            <td class="text-center">
+                                @foreach (var dg in Model.ListDanhGia)
+                                {
+                                    if (dg.IDKhachHang == (int)Session["IDKH"] && dg.IDSanPham == ctdh.IDSanPham)
+                                    {
+                                        @Html.ActionLink("Xem đánh giá", "EditDanhGia", "DanhGiaSanPham", new { id = ctdh.IDSanPham, idDonHang = ctdh.IDDonHang }, new { @class = "btn btn-primary" })
+                                        ldg += 1;
+                                        break;
+                                    }
+
+                                }
+                                @if (ldg == 0)
+                                {
+                                    @Html.ActionLink("Đánh giá sản phẩm", "Create", "DanhGiaSanPham", new { id = ctdh.IDSanPham, idDonHang = ctdh.IDDonHang }, new { @class = "btn btn-primary" })
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            </table>
+
+            <p class="text-lg-right">
+                <a class="btn btn-outline-success mt-5 ml-4" href="/SanPham/Index"> Bỏ qua <i class="fa fa-arrow-right"></i></a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ShowImagePreview(UploadImage, previewImage) {
+        if (UploadImage.files && UploadImage.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(UploadImage.files[0]);
+        }
+    }
+</script>
+<script>
+    function ShowImagePreview1(UploadImage1, previewImage1) {
+        if (UploadImage1.files && UploadImage1.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage1).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(UploadImage1.files[0]);
+        }
+    }
+</script>
+<script>
+    function ShowImagePreview2(UploadImage2, previewImage2) {
+        if (UploadImage2.files && UploadImage2.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage2).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(UploadImage2.files[0]);
+        }
+    }
+</script>
+
+

@@ -1,0 +1,29 @@
+﻿@model WebSenDa.Models.ViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DanhGiaThanhCong</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="~/Scripts/scripts.js"></script>
+</head>
+<body style="text-align:center">
+    <div class="text-center m-5" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+
+        <h2 class="py-5">Cảm ơn anh / chị đã đánh giá sản phẩm !!!</h2>
+
+        @Html.ActionLink("Đánh giá tiếp các sản phẩm còn lại", "Index", "DanhGiaSanPham", new { id = Session["iddh"] }, new { @class = "btn btn-info my-4" })
+        @Html.ActionLink("Trở về trang chủ", "Index", "SanPham", null, new { @class = "btn btn-success my-4" })
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

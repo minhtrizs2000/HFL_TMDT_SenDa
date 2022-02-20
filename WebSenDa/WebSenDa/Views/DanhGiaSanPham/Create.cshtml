@@ -1,0 +1,72 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+<link href="~/Content/Cart/ThanhToan.css" rel="stylesheet" />
+<div class="thanhToanContainer">
+    <h1 class="text-center p-4" style="color: #008042; font-size:40px;">Đánh giá sản phẩm</h1>
+    <div class="receiptContainer text-center">
+        <img src="@Url.Content(Model.sanPham.Hinh)" width="200" height="200" />
+        <h3 class="text-center">@Model.sanPham.TenSanPham</h3>
+        <div class="mx-5">
+            @using (Html.BeginForm("Create", "DanhGiaSanPham", FormMethod.Post, new { enctype = "multipart/form-data", @Class ="row" }))
+            {
+                <div class="col-6">
+                    <div class="form-group ">
+                        <label class="control-label" for="UploadImage">UploadImage</label>
+                        <input accept="image/*" type="file" data-val="true" data-val-required="Hãy chọn hình" id="UploadImage" name="UploadImage">
+                        <span class="text-danger field-validation-valid" hidden="" data-valmsg-for="UploadImage" data-valmsg-replace="true"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="UploadImage1">UploadImage</label>
+                        <input accept="image/*" type="file" data-val="true" data-val-required="Hãy chọn hình" id="UploadImage" name="UploadImage1">
+                        <span class="text-danger field-validation-valid" hidden="" data-valmsg-for="UploadImage1" data-valmsg-replace="true"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="UploadImage2">UploadImage</label>
+                        <input accept="image/*" type="file" data-val="true" data-val-required="Hãy chọn hình" id="UploadImage" name="UploadImage2">
+                        <span class="text-danger field-validation-valid" hidden="" data-valmsg-for="UploadImage2" data-valmsg-replace="true"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-group col-6">
+                    <label class="control-label" for="NoiDung">Nội Dung Đánh Giá:</label>
+                    <div class="col-md-12 ">
+                        @Html.TextArea("NoiDung", new { @Class = "form-control mw-100", cols = "50", rows = "5" })
+                        <span class="text-danger field-validation-valid" data-valmsg-for="NoiDung" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.ActionLink("Trở về", "Index", "DanhGiaSanPham", new { id = Model.donHang.IDDonHang }, new { @class = "btn btn-primary my-4" })
+                    @{
+                        Session["iddh"] = Model.donHang.IDDonHang;
+                    }
+                    <input type="submit" value="Lưu" class="btn btn-primary">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function ShowImagePreview(UploadImage, previewImage) {
+        if (UploadImage.files && UploadImage.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImage).attr('src', e.target.result);
+            }
+            reader.readAsDataURL(UploadImage.files[0]);
+        }
+    }
+</script>

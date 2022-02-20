@@ -1,0 +1,53 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<h2 class="text-center">Chi Tiết Tài Khoản</h2>
+
+<div class="form-group">
+    <a class="btn btn-info" href="@Url.Action("Index","NhanVien")">Quay lại</a>
+</div>
+
+<div style="padding:20px;box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+    <div class="col-12">
+        <div class="row detail_Info">
+            <div class="col-9 row">
+
+                <h4 class="col-4">Họ tên</h4>
+                <h5 class="col-8">
+                    @Html.DisplayFor(model => model.nhanVien.TenNhanVien)
+                </h5>
+                <h4 class="col-4">Số điện thoại</h4>
+                <h5 class="col-8">
+                    @Html.DisplayFor(model => model.nhanVien.SoDienThoai)
+                </h5>
+                <h4 class="col-4">CCCD/CMND</h4>
+                <h5 class="col-8">
+                    @Html.DisplayFor(model => model.nhanVien.CMND)
+                </h5>
+                <h4 class="col-4">Email</h4>
+                <h5 class="col-8">
+                    @Html.DisplayFor(model => model.nhanVien.Email)
+                </h5>
+                <h4 class="col-4">Loại tài khoản</h4>
+                <h5 class="col-8">
+                    @Html.DisplayFor(model => model.nhanVien.LoaiTaiKhoan.TenLoaiTaiKhoan)
+                </h5>
+                <h4 class="col-4">Quyền</h4>
+                <h5 class="col-8">
+                    @Html.DisplayFor(model => model.nhanVien.Quyen.TenQuyen)
+                </h5>
+            </div>
+            <div class="col-3 text-center">
+                <img width="200" height="200" src="@Url.Content(Model.nhanVien.AnhDaiDien)" />
+                <br />
+                <p style="font-size:31px; word-break:break-word;">
+                    @Html.DisplayFor(model => model.nhanVien.TenTaiKhoan)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+

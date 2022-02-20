@@ -1,0 +1,157 @@
+.itemBanner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    overflow: hidden;
+    border: 2px solid #0B8B00;
+    perspective: 1000px;
+    height: 500px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 35px 30px -20px;
+}
+
+.itemBanner > .ibannerFront > img{
+    width: 400%;
+    height: 500px;
+}
+.ibanner2{
+    margin-top: 100px;
+}
+
+.cardBanner {
+    background-color: transparent;
+    width: 100%;
+    height: 500px;
+    perspective: 1000px;
+}
+
+.ibannerFront {
+    background-color: #bbb;
+    color: black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 150px;
+}
+
+/*HOT ITEMS*/
+.hotItems {
+    margin: 80px 0;
+    padding-bottom: 20px;
+    color: #0B8B00;
+    box-shadow: #0B8B00 0px 25px 20px -20px;
+}
+.hotItemsContainer .hItem {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid #0B8B00;
+}
+.hotItemsContainer .hItem img{
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+}
+
+/*normalItems*/
+.normalItems {
+    margin: 80px 0;
+    padding-bottom: 20px;
+    color: #0B8B00;
+}
+.normalItems .normalItemsContainer .nItem{
+    margin: 10px;
+    border-top: 4px dashed rgba(77, 173, 70, 0.4);;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.normalItems .normalItemsContainer .nItem img{
+    width: 100%;
+    height: 200px;
+}
+.normalItems .normalItemsContainer .nItem .nItemContent{
+    padding: 10px;
+}
+.normalItems .normalItemsContainer .nItem .nItemContent p{
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+}
+.normalItems .normalItemsContainer .nItem .nItemContent .nItemContent_span{
+    display: flex;
+    justify-content: space-between;
+    color: #f00;
+}
+.normalItems .normalItemsContainer .nItem .nItemContent .nItemContent_span span:first-child{
+    font-size: 16px;
+    font-style: italic;
+}
+
+.normalItems .normalItemsContainer{
+    position: relative;
+}
+.normalItems .normalItemsContainer .readMoreBtn{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:30%;
+    right: -5%;
+    width: 110px;
+    height: 110px;
+    background: rgba(110, 203, 101, 0.2);
+    border-radius: 50%;
+}
+.normalItems .normalItemsContainer .readMoreBtn a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding-top: 20px;
+    transition: all 0.5s;
+}
+.normalItems .normalItemsContainer .readMoreBtn a span{
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    line-height: 10px;
+}
+.normalItems .normalItemsContainer .readMoreBtn:hover a{
+    color: #0B8B00;
+}
+.normalItems .normalItemsContainer .readMoreBtn:hover{
+    background-color: rgba(110, 203, 101, 0.5);
+}
+/*promotion*/
+.promotion {
+    width: 100%;
+    height: 200px;
+    background: url(../../Images/Banners/Banner06.jpg) center fixed;
+    color: #98ff8f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.promotion h1{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*News*/
+.mNews{
+    padding: 50px 0;
+    height: 650px;
+    color: #0B8B00;
+}
+.mNews h1{
+    font-size: 50px;
+    font-weight: 700;
+    text-align:center;
+}
+.mNews img{
+    width: 100%;
+    padding: 15px 0;
+}

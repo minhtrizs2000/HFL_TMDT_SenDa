@@ -1,0 +1,23 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/Cart/Cart.css" rel="stylesheet" />
+<link href="~/Content/Cart/ThanhToan.css" rel="stylesheet" />
+
+<a class="btn btn-outline-success mt-5 ml-4" href="@Url.Action("Index","GioHang")"><i class="fa fa-arrow-left"></i>Quay lại</a>
+<div class="thanhToanContainer">
+    <h1 class="text-center p-4" style="color: #00ff84; font-size:40px;">ĐƠN HÀNG ĐÃ HOÀN TẤT</h1>
+    <div class="receiptContainer text-center">
+        <h1 class="">Đơn của bạn đang ở trạng thái chờ duyệt</h1>
+        <div class="receiptItems">
+            <h4>Vui lòng đợi shop xác nhận đơn nhé!</h4>
+            <a href="@Url.Action("Index","SanPham")" class="btn btn-success mt-5">Tiếp tục mua hàng</a>
+        </div>
+    </div>
+</div>
+

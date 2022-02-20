@@ -1,0 +1,86 @@
+﻿@model WebSenDa.Models.ViewModel
+
+@{ 
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="text-center">Danh Sách Nhân Viên</h2>
+<div class="d-flex justify-content-around">
+    <a href="@Url.Action("Create","NhanVien")" class="btn btn-primary user-btn-them mt-3 mb-3">Thêm mới nhân viên</a>
+
+    @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
+    {
+        <div class="row mt-3">
+            <input class="user-input-search ml-3" type="text" placeholder="Nhập từ khóa tìm kiếm..." name="search" />
+
+            <button class="btn btn-search btn-info ml-3" type="submit"><i class="fas fa-search"></i> Tìm kiếm</button>
+
+            <a href='@Url.Action("Index", "NhanVien")' class="btn btn-reload btn-secondary ml-3"><i class="fas fa-sync-alt"></i> Tải lại</a>
+        </div>
+    }
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nhanVien.TenTaiKhoan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nhanVien.TenNhanVien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nhanVien.CMND)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nhanVien.AnhDaiDien)
+            </th>
+            <th>
+                @*Html.DisplayNameFor(model => model.nhanvien.LoaiTaiKhoan.TenLoaiTaiKhoan)*@
+                Tên loại tài khoản
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nhanVien.Quyen.TenQuyen)
+            </th>
+            <th scope="col" class="text-center"><i class="fa fa-cog"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListNhanVien)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTaiKhoan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNhanVien)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CMND)
+                </td>
+
+                <td class="text-center">
+                    <img src="@Url.Content(item.AnhDaiDien)" style="width: 50px; height:50px;" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiTaiKhoan.TenLoaiTaiKhoan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quyen.TenQuyen)
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-warning mr-3" href="@Url.Action("Edit",new { id=item.IDNhanVien})"><span style="margin-right:0px" class="fas fa-pencil-alt"></span></a>
+                    <a class="btn btn-info " href="@Url.Action("Details",new { id=item.IDNhanVien})"><span style="margin-left:0px" class="far fa-clipboard"></span></a>
+
+                    @using (Html.BeginForm("Delete", "NhanVien", FormMethod.Post))
+                    {
+                        <button type="submit" name="submit" value="@item.IDNhanVien" class="btn btn-delete_employeemr-2" onclick="return confirm('Bạn chắc chắn xóa chứ?')"><i class="fas fa-user-minus"></i> Xóa nhân viên</button>                
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

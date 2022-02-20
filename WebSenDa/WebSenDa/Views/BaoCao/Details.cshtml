@@ -1,0 +1,70 @@
+﻿@model WebSenDa.Models.ViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 class="text-center">Báo cáo thống kê chi tiết tháng @Model.Month - @Model.Year</h1>
+
+<a href="/BaoCao/LocNam?inputYear=@Model.Year" class="btn btn-primary mb-4">Trở về</a>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Mã sản phẩm</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Số lượng nhập</th>
+            <th scope="col">Số lượng bán</th>
+            <th scope="col">Tổng tiền nhập</th>
+            <th scope="col">Tổng tiền bán</th>
+            <th scope="col">Lợi nhuận</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListSanPham)
+        {
+            Model.SLNhap = 0;
+            Model.SLBan = 0;
+            Model.TongTienNhap = 0;
+            Model.TongTienBan = 0;
+            <tr>
+                <td>@item.IDSanPham</td>
+                <td>@item.TenSanPham</td>
+                @foreach (var kho in Model.ListNhapKho)
+                {
+                    if (kho.IDSanPham == item.IDSanPham)
+                    {
+                        Model.SLNhap += kho.SoLuongNhap;
+                        Model.TongTienNhap += kho.GiaNhap * kho.SoLuongNhap;
+                    }
+                }
+                @foreach (var dh in Model.ListDonHang)
+                {
+                    if (dh.TrangThai != 4)
+                    {
+                        foreach (var ctdh in Model.ListChiTietDonHang)
+                        {
+                            if (ctdh.IDSanPham == item.IDSanPham && ctdh.IDDonHang == dh.IDDonHang)
+                            {
+                                Model.SLBan += ctdh.SoLuong;
+                                Model.TongTienBan += ctdh.DonGia * ctdh.SoLuong;
+                            }
+                        }
+                    }
+                }
+                @{ 
+                    Model.TongTienBan *= 1000;
+                    Model.TongTienNhap *= 1000;
+                }
+                <td>@Model.SLNhap.ToString("N0")</td>
+                <td>@Model.SLBan.ToString("N0")</td>
+                <td>@Model.TongTienNhap.ToString("N0")</td>
+                <td>@Model.TongTienBan.ToString("N0")</td>
+                @{ 
+                    decimal total = Model.TongTienBan - Model.TongTienNhap;
+                }
+                <td>@total.ToString("N0")</td>
+            </tr>
+        }
+    </tbody>
+</table>

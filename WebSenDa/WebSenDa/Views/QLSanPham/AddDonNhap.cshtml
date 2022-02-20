@@ -1,0 +1,51 @@
+﻿@model WebSenDa.Models.ViewModel
+@{
+    ViewBag.Title = "AddDonNhap";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<h2 class="text-center">Thêm Đơn Nhập Kho</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.nhapKho.IDSanPham)
+
+        @Html.HiddenFor(model => model.nhapKho.NgayNhap)
+
+        <div class="form-group wrap-flex-align-center">
+            @Html.LabelFor(model => model.nhapKho.GiaNhap, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nhapKho.GiaNhap, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8", min = 1, type="number" } })
+                @Html.ValidationMessageFor(model => model.nhapKho.GiaNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group wrap-flex-align-center">
+            @Html.LabelFor(model => model.nhapKho.SoLuongNhap, htmlAttributes: new { @class = "control-label col-md-offset-1 col-md-2 col-sm-4 text-bold" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nhapKho.SoLuongNhap, new { htmlAttributes = new { @class = "form-control col-md-10 col-sm-8", min = 1 } })
+                @Html.ValidationMessageFor(model => model.nhapKho.SoLuongNhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @if (ViewBag.Error != null)
+                {
+                   <p style="color:red">@ViewBag.Error</p>
+                }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-primary" style="width: 80px" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="col-md-offset-2 col-md-10 form-group">
+    <a class="btn btn-info" href="@Url.Action("Index","QLSanPham")">Quay lại</a>
+</div>
